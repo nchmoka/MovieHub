@@ -83,18 +83,27 @@
     }
   });
 
-    // JavaScript for form submission
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
+    // Load the users from the JSON file
+    fetch('users.json')
+      .then(response => response.json())
+      .then(data => {
+        const users = data.users;
 
-      if (username === 'admin' && password === '123456') {
-        window.location.href = 'homepage.html';
-      } else {
-        document.getElementById('errorText').classList.remove('hidden');
-      }
-    });
+        // JavaScript for form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          var username = document.getElementById('username').value;
+          var password = document.getElementById('password').value;
+
+          // Check if the username and password match any user in the JSON file
+          const user = users.find(u => u.username === username && u.password === password);
+          if (user) {
+            window.location.href = 'homepage.html';
+          } else {
+            document.getElementById('errorText').classList.remove('hidden');
+          }
+        });
+      });
   </script>
 </body>
 </html>
