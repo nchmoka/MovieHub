@@ -5,11 +5,7 @@ let moviesData = []
 fetch(jsonPath)
     .then(response => response.json())
     .then(data => {
-        // Now 'data' contains the parsed JSON from the file
-        console.log(data);
-        // You can use the data as needed, for example, storing it in a variable
         moviesData = data;
-        console.log(moviesData);
         const movieListElement = document.getElementById('movieList');
         movieListElement.classList.add("grid", "grid-cols-2", "md:grid-cols-3", "lg:grid-cols-4", "xl:grid-cols-5", "gap-5", "p-5");
         movieListElement.innerHTML = ''; // Clear previous content
