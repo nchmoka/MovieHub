@@ -98,6 +98,7 @@
           // Check if the username and password match any user in the JSON file
           const user = users.find(u => u.username === username && u.password === password);
           if (user) {
+            sessionStorage.setItem('user', JSON.stringify(user));
             window.location.href = 'homepage.html';
           } else {
             document.getElementById('errorText').classList.remove('hidden');

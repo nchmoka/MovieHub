@@ -34,7 +34,8 @@
 
         <div class="flex items-center space-x-4">
            
-            
+            <span id="greetingMessage"></span>
+
             <!-- Search box in the middle -->
             <div class="flex-grow text-center">
                 <div class="flex justify-center items-center">
@@ -53,7 +54,16 @@
     <div class="container mx-auto mt-10" id="watchList">
 
     </div>
-
+    <script>
+        const userString = sessionStorage.getItem('user');
+        if (userString) {
+            const user = JSON.parse(userString);
+            const greetingMessage = document.getElementById('greetingMessage');
+            if (user) {
+                greetingMessage.textContent = `Hello, ${user.username}`;
+            }
+        }
+    </script>
     <script>
         // Sample watch list data
         const watchList = [];
