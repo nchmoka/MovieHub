@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <script>
+
+
         // Assuming you have a JSON file named data.json
         const jsonPath = '/data.json';
         let moviesData = []
@@ -173,4 +175,17 @@
     </div>
 
 </body>
+
+
+<script>
+        const userString = sessionStorage.getItem('user');
+        if (userString) {
+            const user = JSON.parse(userString);
+            const greetingMessage = document.getElementById('greetingMessage');
+            if (user) {
+                greetingMessage.textContent = `Hello, ${user.username}`;
+            }
+        }
+</script>
+
 </html>
